@@ -2,25 +2,52 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-const titleStartArr = ['> \\', '> |', '> /', '> i', '> i\\', '> i|', '> i/', '> in', '> in\\', '> in|', '> in/', '> ing', '> ing\\', '> ing|', '> ing/', '> ingm', '> ingm\\', '> ingm|', '> ingm/', '> ingma', '> ingma\\', '> ingma|', '> ingma/', '> ingmar', '> ingmar\\', '> ingmar|', '> ingmar/', '> ingmar.', '> ingmar.\\', '> ingmar.|', '> ingmar./', '> ingmar.d', '> ingmar.d\\', '> ingmar.d|', '> ingmar.d/', '> ingmar.de', '> ingmar.de\\', '> ingmar.de|', '> ingmar.de/', '> ingmar.dev'];
-const titleEndArr = ['> ingmar.dev', '> ngmar.dev', '> gmar.dev', '> mar.dev', '> ar.dev', '> r.dev', '> .dev', '> dev', '> ev', '> v', '>'];
+const webTitle = 'ingmar.dev';
 
-async function changeTitle() {
-    for (let i = 0; i < titleStartArr.length; i++) {
-        document.title = titleStartArr[i];
+// async function titleChange(string) {
+//     // build up
+//     for (let i = 0; i < string.length; i++) {
+//         document.title = '> ' + string.substring(0, i) + '\\';
+//         await sleep(300);
+//         document.title = '> ' + string.substring(0, i) + '|';
+//         await sleep(300);
+//         document.title = '> ' + string.substring(0, i) + '/';
+//         await sleep(300);
+//         document.title = '> ' + string.substring(0, i + 1);
+//         await sleep(300);
+//     }
+
+//     await sleep(200);
+
+    // break down
+    // for (let i = 0; i < string.length + 1; i++) {
+    //     document.title = '> ' + string.substring(string.length, i);
+    //     await sleep(300);
+    // }
+
+//     titleChange(webTitle);
+// }
+
+
+async function titleChange2(string) {
+    for (let i = 0; i < string.length; i++) {
+        for (let j = 0; j <= i; j++) {
+            document.title = string.substring(0, i) + ' < ' + string[j];
+            await sleep(250);
+        }
+    }
+
+    document.title = string;
+    await sleep(300);
+
+    for (let i = string.length; i >= 0; i--) {
+        document.title = string.substring(0, i) + ' <';
         await sleep(300);
     }
 
-    await sleep(200);
+    await sleep(300);
 
-    for (let i = 0; i < titleEndArr.length; i++) {
-        document.title = titleEndArr[i];
-        await sleep(250);
-    }
-
-    return changeTitle();
+    titleChange2(string);
 }
 
-changeTitle();
-
-
+titleChange2(webTitle);
