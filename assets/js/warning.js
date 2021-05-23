@@ -6,6 +6,9 @@ function showWarning() {
                     if (confirm("It's not my problem if you get offended at this point.")) {
                         window.open("/onlyfans", "_blank");
                     }
+                    else {
+                        alert("Pussy");
+                    }
                 }
             }
         }
