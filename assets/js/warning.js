@@ -4,7 +4,7 @@ function showWarning() {
             if (confirm("Promise?")) {
                 if (confirm("Don't 'OK' me, who do you think you are?")) {
                     if (confirm("It's not my problem if you get offended at this point.")) {
-                        window.open("https://ingmar.dev/onlyfans", "_blank");
+                        window.open("/onlyfans", "_blank");
                     }
                 }
             }
